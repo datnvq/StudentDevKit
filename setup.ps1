@@ -133,6 +133,21 @@ function Get-SelectedComponents {
                 [void]$selected.Add([string]$c.id)
             }
         }
+        if ($selected.Count -eq 0) {
+            Show-Header -SubTitle 'Thong Bao'
+            Write-Host '  [THONG TIN] Tat ca cac goi de xuat chuan cho sinh vien:' -ForegroundColor Green
+            Write-Host '              - Visual Studio Code' -ForegroundColor White
+            Write-Host '              - Git for Windows' -ForegroundColor White
+            Write-Host '              - MinGW-w64 GCC & G++ (UCRT64)' -ForegroundColor White
+            Write-Host '              - GDB Debugger' -ForegroundColor White
+            Write-Host '              - VS Code Extensions & Settings' -ForegroundColor White
+            Write-Host '              - C++ Snippets & Template Mau' -ForegroundColor White
+            Write-Host ''
+            Write-Host '  => Tat ca DA DUOC CAI DAT DAY DU tren may cua ban!' -ForegroundColor Green
+            Write-Host '     Ban khong can phai cai lai. Hay nhan [4] de kiem tra hoac [5] de xem huong dan.' -ForegroundColor Cyan
+            Wait-Menu
+            return $null
+        }
     }
 
     $catLabels = @{
@@ -335,14 +350,11 @@ function Invoke-InstallPlan {
 
         try {
             Write-Host "  -> Dang thuc thi: $scriptName..." -ForegroundColor DarkCyan
+            $global:LASTEXITCODE = 0
             & $scriptPath
 
             # Refresh PATH so verification is reliable immediately
             Update-SessionPath
-
-            if ($LASTEXITCODE -ne 0) {
-                throw "Script ket thuc voi ma loi: $LASTEXITCODE."
-            }
 
             if (Test-ComponentInstalled $id) {
                 Write-Host "  [THANH CONG] Da cai dat va kiem tra hoan tat: $name" -ForegroundColor Green

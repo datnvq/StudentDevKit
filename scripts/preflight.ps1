@@ -41,14 +41,15 @@ function Get-PreflightResult {
         $result.OK = $false
     }
 
-    # ---- 3. Internet connectivity (lightweight) ----
+    # ---- 3. Internet connectivity (lightweight HTTP check) ----
     try {
-        $ping = Test-Connection -ComputerName 'winget.azureedge.net' -Count 1 -Quiet -ErrorAction SilentlyContinue
-        if (-not $ping) {
-            [void]$result.Warnings.Add('Could not reach winget CDN (winget.azureedge.net). Check internet connection.')
-        }
+        $req = [System.Net.WebRequest]::Create('http://www.msftconnecttest.com/connecttest.txt')
+        $req.Timeout = 2500
+        $req.Method = 'HEAD'
+        $resp = $req.GetResponse()
+        $resp.Close()
     } catch {
-        [void]$result.Warnings.Add('Internet connectivity check failed. Installation may not work offline.')
+        [void]$result.Warnings.Add('Kiem tra ket noi internet that bai. Cai dat co the khong hoat dong neu offline.')
     }
 
     # ---- 4. Disk space (C: drive, require at least 3 GB free) ----
