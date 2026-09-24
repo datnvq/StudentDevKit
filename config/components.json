@@ -1,0 +1,147 @@
+{
+  "version": "0.5.0",
+  "components": [
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "category": "Editor",
+      "categoryVi": "Trình soạn thảo",
+      "description": "Trình biên tập mã nguồn hiện đại, phổ biến và tối ưu nhất cho lập trình.",
+      "recommended": true,
+      "script": "install-vscode.ps1"
+    },
+    {
+      "id": "git",
+      "name": "Git for Windows",
+      "category": "Core",
+      "categoryVi": "Công cụ cốt lõi",
+      "description": "Hệ thống quản lý phiên bản mã nguồn phân tán chuẩn quốc tế (GitHub, GitLab).",
+      "recommended": true,
+      "script": "install-git.ps1"
+    },
+    {
+      "id": "cpp-gcc",
+      "name": "GCC & G++ (MinGW-w64 UCRT64)",
+      "category": "C/C++",
+      "categoryVi": "Lập trình C/C++",
+      "description": "Bộ trình biên dịch chuẩn C/C++ (gcc, g++) mới nhất qua MSYS2 UCRT64.",
+      "recommended": true,
+      "script": "install-cpp-gcc.ps1"
+    },
+    {
+      "id": "cpp-gdb",
+      "name": "GDB Debugger",
+      "category": "C/C++",
+      "categoryVi": "Lập trình C/C++",
+      "description": "Trình gỡ lỗi GNU Debugger giúp theo dõi biến và debug từng dòng code C/C++.",
+      "recommended": true,
+      "script": "install-cpp-gdb.ps1"
+    },
+    {
+      "id": "cmake",
+      "name": "CMake",
+      "category": "Build",
+      "categoryVi": "Hệ thống Build",
+      "description": "Hệ thống tự động hóa quá trình biên dịch và quản lý dự án C/C++ chuẩn.",
+      "recommended": false,
+      "script": "install-cmake.ps1"
+    },
+    {
+      "id": "ninja",
+      "name": "Ninja Build",
+      "category": "Build",
+      "categoryVi": "Hệ thống Build",
+      "description": "Bộ sinh file thực thi siêu nhanh, kết hợp với CMake để tối ưu tốc độ build.",
+      "recommended": false,
+      "script": "install-ninja.ps1"
+    },
+    {
+      "id": "clang",
+      "name": "LLVM / Clang",
+      "category": "C/C++",
+      "categoryVi": "Lập trình C/C++",
+      "description": "Bộ công cụ biên dịch mã nguồn C/C++ hiện đại của Apple/LLVM với clang-format.",
+      "recommended": false,
+      "script": "install-clang.ps1"
+    },
+    {
+      "id": "cppcheck",
+      "name": "Cppcheck",
+      "category": "C/C++",
+      "categoryVi": "Lập trình C/C++",
+      "description": "Công cụ phân tích tĩnh mã nguồn C/C++, phát hiện lỗi logic và tràn bộ nhớ.",
+      "recommended": false,
+      "script": "install-cppcheck.ps1"
+    },
+    {
+      "id": "python",
+      "name": "Python 3.13",
+      "category": "Language",
+      "categoryVi": "Ngôn ngữ mở rộng",
+      "description": "Môi trường lập trình Python phục vụ giải thuật, AI và khoa học dữ liệu.",
+      "recommended": false,
+      "script": "install-python.ps1"
+    },
+    {
+      "id": "node",
+      "name": "Node.js (Bản LTS)",
+      "category": "Language",
+      "categoryVi": "Ngôn ngữ mở rộng",
+      "description": "Môi trường JavaScript runtime ổn định cho học lập trình web và công nghệ phần mềm.",
+      "recommended": false,
+      "script": "install-node.ps1"
+    },
+    {
+      "id": "vscode-ext",
+      "name": "Các Extension C/C++ & Runner",
+      "category": "VS Code",
+      "categoryVi": "Cấu hình VS Code",
+      "description": "Cài đặt C/C++ Tools (Microsoft), CMake Tools và Code Runner chạy nhanh bằng 1 click.",
+      "recommended": true,
+      "script": "configure-vscode-extensions.ps1"
+    },
+    {
+      "id": "settings",
+      "name": "Thiết lập chuẩn VS Code",
+      "category": "VS Code",
+      "categoryVi": "Cấu hình VS Code",
+      "description": "Cấu hình tự động lưu, định dạng code chuẩn, cấu hình terminal và phím tắt tối ưu.",
+      "recommended": true,
+      "script": "configure-vscode-settings.ps1"
+    },
+    {
+      "id": "snippets",
+      "name": "Bộ Snippets C/C++ Sinh viên",
+      "category": "VS Code",
+      "categoryVi": "Cấu hình VS Code",
+      "description": "Mẫu code gõ nhanh cấu trúc hàm main, cin/cout, thuật toán cơ bản tiện lợi.",
+      "recommended": true,
+      "script": "configure-cpp-snippets.ps1"
+    },
+    {
+      "id": "template",
+      "name": "Template Dự án C++ Mẫu",
+      "category": "Project",
+      "categoryVi": "Dự án mẫu",
+      "description": "Khởi tạo thư mục dự án C++ mẫu hoàn chỉnh sẵn sàng để mở và chạy thử ngay.",
+      "recommended": true,
+      "script": "install-cpp-template.ps1"
+    }
+  ],
+  "wingetPackages": {
+    "vscode": "Microsoft.VisualStudioCode",
+    "git": "Git.Git",
+    "msys2": "MSYS2.MSYS2",
+    "cmake": "Kitware.CMake",
+    "ninja": "Ninja-build.Ninja",
+    "clang": "LLVM.LLVM",
+    "cppcheck": "Cppcheck.Cppcheck",
+    "python": "Python.Python.3.13",
+    "node": "OpenJS.NodeJS.LTS"
+  },
+  "vscodeExtensions": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools",
+    "formulahendry.code-runner"
+  ]
+}
