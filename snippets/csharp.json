@@ -1,0 +1,29 @@
+{
+  "Console.WriteLine": {
+    "prefix": "cw",
+    "body": [
+      "Console.WriteLine(${1});"
+    ],
+    "description": "Console WriteLine"
+  },
+  "Class definition": {
+    "prefix": "class",
+    "body": [
+      "public class ${1:ClassName}",
+      "{",
+      "    ${2}",
+      "}"
+    ],
+    "description": "Class definition"
+  },
+  "Main method": {
+    "prefix": "svm",
+    "body": [
+      "static void Main(string[] args)",
+      "{",
+      "    ${1}",
+      "}"
+    ],
+    "description": "Static void Main"
+  }
+}

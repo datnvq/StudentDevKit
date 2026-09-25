@@ -1,11 +1,11 @@
 {
-  "version": "0.5.0",
+  "version": "0.6.1",
   "components": [
     {
       "id": "vscode",
       "name": "Visual Studio Code",
-      "category": "Editor",
-      "categoryVi": "Trình soạn thảo",
+      "category": "Common",
+      "categoryVi": "Công cụ chung",
       "description": "Trình biên tập mã nguồn hiện đại, phổ biến và tối ưu nhất cho lập trình.",
       "recommended": true,
       "script": "install-vscode.ps1"
@@ -13,8 +13,8 @@
     {
       "id": "git",
       "name": "Git for Windows",
-      "category": "Core",
-      "categoryVi": "Công cụ cốt lõi",
+      "category": "Common",
+      "categoryVi": "Công cụ chung",
       "description": "Hệ thống quản lý phiên bản mã nguồn phân tán chuẩn quốc tế (GitHub, GitLab).",
       "recommended": true,
       "script": "install-git.ps1"
@@ -23,16 +23,17 @@
       "id": "cpp-gcc",
       "name": "GCC & G++ (MinGW-w64 UCRT64)",
       "category": "C/C++",
-      "categoryVi": "Lập trình C/C++",
+      "categoryVi": "Môi trường C/C++",
       "description": "Bộ trình biên dịch chuẩn C/C++ (gcc, g++) mới nhất qua MSYS2 UCRT64.",
       "recommended": true,
-      "script": "install-cpp-gcc.ps1"
+      "script": "install-cpp-gcc.ps1",
+      "vscodeExtensions": ["ms-vscode.cpptools", "ms-vscode.cmake-tools"]
     },
     {
       "id": "cpp-gdb",
       "name": "GDB Debugger",
       "category": "C/C++",
-      "categoryVi": "Lập trình C/C++",
+      "categoryVi": "Môi trường C/C++",
       "description": "Trình gỡ lỗi GNU Debugger giúp theo dõi biến và debug từng dòng code C/C++.",
       "recommended": true,
       "script": "install-cpp-gdb.ps1"
@@ -40,8 +41,8 @@
     {
       "id": "cmake",
       "name": "CMake",
-      "category": "Build",
-      "categoryVi": "Hệ thống Build",
+      "category": "C/C++",
+      "categoryVi": "Môi trường C/C++",
       "description": "Hệ thống tự động hóa quá trình biên dịch và quản lý dự án C/C++ chuẩn.",
       "recommended": false,
       "script": "install-cmake.ps1"
@@ -49,8 +50,8 @@
     {
       "id": "ninja",
       "name": "Ninja Build",
-      "category": "Build",
-      "categoryVi": "Hệ thống Build",
+      "category": "C/C++",
+      "categoryVi": "Môi trường C/C++",
       "description": "Bộ sinh file thực thi siêu nhanh, kết hợp với CMake để tối ưu tốc độ build.",
       "recommended": false,
       "script": "install-ninja.ps1"
@@ -59,7 +60,7 @@
       "id": "clang",
       "name": "LLVM / Clang",
       "category": "C/C++",
-      "categoryVi": "Lập trình C/C++",
+      "categoryVi": "Môi trường C/C++",
       "description": "Bộ công cụ biên dịch mã nguồn C/C++ hiện đại của Apple/LLVM với clang-format.",
       "recommended": false,
       "script": "install-clang.ps1"
@@ -68,7 +69,7 @@
       "id": "cppcheck",
       "name": "Cppcheck",
       "category": "C/C++",
-      "categoryVi": "Lập trình C/C++",
+      "categoryVi": "Môi trường C/C++",
       "description": "Công cụ phân tích tĩnh mã nguồn C/C++, phát hiện lỗi logic và tràn bộ nhớ.",
       "recommended": false,
       "script": "install-cppcheck.ps1"
@@ -76,27 +77,49 @@
     {
       "id": "python",
       "name": "Python 3.13",
-      "category": "Language",
-      "categoryVi": "Ngôn ngữ mở rộng",
+      "category": "Python",
+      "categoryVi": "Môi trường Python",
       "description": "Môi trường lập trình Python phục vụ giải thuật, AI và khoa học dữ liệu.",
       "recommended": false,
-      "script": "install-python.ps1"
+      "script": "install-python.ps1",
+      "vscodeExtensions": ["ms-python.python", "ms-python.vscode-pylance"]
+    },
+    {
+      "id": "java",
+      "name": "Java (JDK 21)",
+      "category": "Java",
+      "categoryVi": "Môi trường Java",
+      "description": "Môi trường lập trình Java (OOP), sử dụng OpenJDK 21.",
+      "recommended": false,
+      "script": "install-java.ps1",
+      "vscodeExtensions": ["vscjava.vscode-java-pack"]
+    },
+    {
+      "id": "csharp",
+      "name": "C# (.NET 8 SDK)",
+      "category": "CSharp",
+      "categoryVi": "Môi trường C#",
+      "description": "Nền tảng phát triển .NET và ngôn ngữ C#.",
+      "recommended": false,
+      "script": "install-dotnet.ps1",
+      "vscodeExtensions": ["ms-dotnettools.csharp"]
     },
     {
       "id": "node",
       "name": "Node.js (Bản LTS)",
-      "category": "Language",
-      "categoryVi": "Ngôn ngữ mở rộng",
+      "category": "Node.js",
+      "categoryVi": "Môi trường Node.js",
       "description": "Môi trường JavaScript runtime ổn định cho học lập trình web và công nghệ phần mềm.",
       "recommended": false,
-      "script": "install-node.ps1"
+      "script": "install-node.ps1",
+      "vscodeExtensions": ["dbaeumer.vscode-eslint"]
     },
     {
       "id": "vscode-ext",
-      "name": "Các Extension C/C++ & Runner",
+      "name": "Cài đặt Extension theo ngôn ngữ",
       "category": "VS Code",
       "categoryVi": "Cấu hình VS Code",
-      "description": "Cài đặt C/C++ Tools (Microsoft), CMake Tools và Code Runner chạy nhanh bằng 1 click.",
+      "description": "Tự động cài đặt Code Runner và các Extension tương ứng với các ngôn ngữ đã có trong máy.",
       "recommended": true,
       "script": "configure-vscode-extensions.ps1"
     },
@@ -111,21 +134,21 @@
     },
     {
       "id": "snippets",
-      "name": "Bộ Snippets C/C++ Sinh viên",
+      "name": "Bộ Snippets Đa Ngôn Ngữ",
       "category": "VS Code",
       "categoryVi": "Cấu hình VS Code",
-      "description": "Mẫu code gõ nhanh cấu trúc hàm main, cin/cout, thuật toán cơ bản tiện lợi.",
+      "description": "Mẫu code gõ nhanh cấu trúc cơ bản cho C/C++, Java, Python, C#...",
       "recommended": true,
-      "script": "configure-cpp-snippets.ps1"
+      "script": "configure-vscode-snippets.ps1"
     },
     {
       "id": "template",
-      "name": "Template Dự án C++ Mẫu",
+      "name": "Khởi tạo Dự án Mẫu",
       "category": "Project",
       "categoryVi": "Dự án mẫu",
-      "description": "Khởi tạo thư mục dự án C++ mẫu hoàn chỉnh sẵn sàng để mở và chạy thử ngay.",
+      "description": "Khởi tạo thư mục dự án mẫu cho các ngôn ngữ vào thư mục Documents.",
       "recommended": true,
-      "script": "install-cpp-template.ps1"
+      "script": "install-project-templates.ps1"
     }
   ],
   "wingetPackages": {
@@ -137,11 +160,11 @@
     "clang": "LLVM.LLVM",
     "cppcheck": "Cppcheck.Cppcheck",
     "python": "Python.Python.3.13",
-    "node": "OpenJS.NodeJS.LTS"
+    "node": "OpenJS.NodeJS.LTS",
+    "java": "Microsoft.OpenJDK.21",
+    "csharp": "Microsoft.DotNet.SDK.8"
   },
   "vscodeExtensions": [
-    "ms-vscode.cpptools",
-    "ms-vscode.cmake-tools",
     "formulahendry.code-runner"
   ]
 }

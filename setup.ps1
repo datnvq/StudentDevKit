@@ -151,12 +151,13 @@ function Get-SelectedComponents {
     }
 
     $catLabels = @{
-        'Editor'   = 'TRINH SOAN THAO (EDITOR)'
-        'Core'     = 'CONG CU COT LOI (CORE)'
-        'C/C++'    = 'LAP TRINH C / C++'
-        'Build'    = 'HE THONG BUILD & BIEN DICH'
-        'Language' = 'NGON NGU KHAC'
-        'VS Code'  = 'CAU HINH VS CODE'
+        'Common'   = 'CONG CU CHUNG (EDITOR, CORE)'
+        'C/C++'    = 'MOI TRUONG C / C++'
+        'Python'   = 'MOI TRUONG PYTHON'
+        'Java'     = 'MOI TRUONG JAVA'
+        'CSharp'   = 'MOI TRUONG C# (.NET)'
+        'Node.js'  = 'MOI TRUONG NODE.JS'
+        'VS Code'  = 'CAU HINH VS CODE & DU AN MAU'
         'Project'  = 'DU AN MAU'
     }
 

@@ -1,0 +1,38 @@
+{
+  "Main function": {
+    "prefix": "main",
+    "body": [
+      "def main():",
+      "    ${1:pass}",
+      "",
+      "if __name__ == '__main__':",
+      "    main()"
+    ],
+    "description": "Cấu trúc hàm main chuẩn"
+  },
+  "For loop": {
+    "prefix": "for",
+    "body": [
+      "for ${1:i} in range(${2:n}):",
+      "    ${3:pass}"
+    ],
+    "description": "Vòng lặp for cơ bản"
+  },
+  "Try Except": {
+    "prefix": "try",
+    "body": [
+      "try:",
+      "    ${1:pass}",
+      "except ${2:Exception} as e:",
+      "    print(f'Error: {e}')"
+    ],
+    "description": "Cấu trúc bắt lỗi"
+  },
+  "Print format": {
+    "prefix": "pr",
+    "body": [
+      "print(f'${1}')"
+    ],
+    "description": "Print format string"
+  }
+}

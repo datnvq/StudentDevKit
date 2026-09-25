@@ -1,0 +1,27 @@
+{
+  "Main method": {
+    "prefix": "main",
+    "body": [
+      "public static void main(String[] args) {",
+      "    ${1}",
+      "}"
+    ],
+    "description": "Main method"
+  },
+  "System.out.println": {
+    "prefix": "sout",
+    "body": [
+      "System.out.println(${1});"
+    ],
+    "description": "Print to standard out"
+  },
+  "Class definition": {
+    "prefix": "class",
+    "body": [
+      "public class ${1:ClassName} {",
+      "    ${2}",
+      "}"
+    ],
+    "description": "Class definition"
+  }
+}

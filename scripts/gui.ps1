@@ -1,4 +1,4 @@
-﻿#requires -Version 5.1
+#requires -Version 5.1
 # scripts/gui.ps1 — StudentDevKit WPF GUI (Dark Theme)
 # Installer runs in a background PowerShell Runspace so the UI never freezes.
 # Compatible: PowerShell 5.1+, .NET Framework 4.5+
@@ -376,11 +376,12 @@ function Render-ComponentCards {
     $catGroups = $components | Group-Object category
 
     $catColors = @{
-        'Editor'   = '#89b4fa'
-        'Core'     = '#fab387'
+        'Common'   = '#89b4fa'
         'C/C++'    = '#a6e3a1'
-        'Build'    = '#f9e2af'
-        'Language' = '#cba6f7'
+        'Python'   = '#f9e2af'
+        'Java'     = '#fab387'
+        'CSharp'   = '#cba6f7'
+        'Node.js'  = '#a6adc8'
         'VS Code'  = '#89dceb'
         'Project'  = '#f38ba8'
     }

@@ -1,4 +1,4 @@
-﻿# scripts/detect.ps1
+# scripts/detect.ps1
 # Single source of truth for component detection.
 # Dot-sourced by: setup.ps1, gui.ps1, verify.ps1, and gcc/gdb installer scripts.
 # Must NOT import common.ps1 (no circular deps). Self-contained.
@@ -224,29 +224,27 @@ function Test-ComponentInstalled {
             return (& $inPath 'node')
         }
 
+        'java' {
+            if (& $inPath 'java') { return $true }
+            if (& $inPath 'javac') { return $true }
+            $locs = @(
+                (Join-Path $env:ProgramFiles 'Eclipse Adoptium\jdk-21*\bin\java.exe'),
+                (Join-Path $env:ProgramFiles 'Microsoft\jdk-21*\bin\java.exe')
+            )
+            foreach ($l in $locs) {
+                if (Get-ChildItem -Path $l -ErrorAction SilentlyContinue) { return $true }
+            }
+            return $false
+        }
+
+        'csharp' {
+            if (& $inPath 'dotnet') { return $true }
+            $loc = Join-Path $env:ProgramFiles 'dotnet\dotnet.exe'
+            return (Test-Path $loc)
+        }
+
         'vscode-ext' {
-            # Require code in PATH or common location
-            if (-not (Test-ComponentInstalled 'vscode')) { return $false }
-            $codeCmd = Get-Command 'code' -ErrorAction SilentlyContinue
-            if (-not $codeCmd) {
-                # Try common locations
-                $codePath = @(
-                    (Join-Path $env:LOCALAPPDATA 'Programs\Microsoft VS Code\bin\code.cmd'),
-                    (Join-Path $env:ProgramFiles 'Microsoft VS Code\bin\code.cmd')
-                ) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
-                if (-not $codePath) { return $false }
-                $installed = @(& $codePath --list-extensions 2>$null)
-            } else {
-                $installed = @(& $codeCmd --list-extensions 2>$null)
-            }
-            # Load config to get extension list
-            $configPath = Join-Path (Split-Path $PSScriptRoot -Parent) 'config\components.json'
-            if (-not (Test-Path $configPath)) { return $false }
-            $cfg = Get-Content $configPath -Raw | ConvertFrom-Json
-            foreach ($ext in @($cfg.vscodeExtensions)) {
-                if ($installed -notcontains $ext) { return $false }
-            }
-            return $true
+            return $false
         }
 
         'settings' {
