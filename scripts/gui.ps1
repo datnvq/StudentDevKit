@@ -516,6 +516,8 @@ function Render-SystemCheck {
         @{ Label = 'LLVM / Clang';           Installed = (Test-ComponentInstalled 'clang')   },
         @{ Label = 'Cppcheck';               Installed = (Test-ComponentInstalled 'cppcheck') },
         @{ Label = 'Python';                 Installed = (Test-ComponentInstalled 'python')  },
+        @{ Label = 'Java (JDK)';             Installed = (Test-ComponentInstalled 'java')    },
+        @{ Label = 'C# (.NET SDK)';          Installed = (Test-ComponentInstalled 'csharp')  },
         @{ Label = 'Node.js';                Installed = (Test-ComponentInstalled 'node')    },
         @{ Label = 'VS Code Extensions';     Installed = (Test-ComponentInstalled 'vscode-ext') },
         @{ Label = 'VS Code Settings';       Installed = (Test-ComponentInstalled 'settings')},
@@ -741,6 +743,7 @@ $btnStartInstall.Add_Click({
 
             try {
                 Append-Log "  -> Running: $($comp.script)"
+                $env:STUDENTDEVKIT_CURRENT_COMP_ID = $id
                 & $scriptPath *>&1 | ForEach-Object {
                     $line = $_.ToString().Trim()
                     if ($line) { Append-Log "     $line" }

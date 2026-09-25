@@ -1,5 +1,5 @@
 {
-  "version": "0.6.1",
+  "version": "0.6.2",
   "components": [
     {
       "id": "vscode",
@@ -79,27 +79,57 @@
       "name": "Python 3.13",
       "category": "Python",
       "categoryVi": "Môi trường Python",
-      "description": "Môi trường lập trình Python phục vụ giải thuật, AI và khoa học dữ liệu.",
+      "description": "Môi trường lập trình Python phiên bản mới nhất phục vụ giải thuật, AI.",
+      "recommended": false,
+      "script": "install-python.ps1",
+      "vscodeExtensions": ["ms-python.python", "ms-python.vscode-pylance"]
+    },
+    {
+      "id": "python312",
+      "name": "Python 3.12 (Ổn định)",
+      "category": "Python",
+      "categoryVi": "Môi trường Python",
+      "description": "Môi trường lập trình Python phiên bản 3.12, tương thích tốt hơn với một số thư viện cũ.",
       "recommended": false,
       "script": "install-python.ps1",
       "vscodeExtensions": ["ms-python.python", "ms-python.vscode-pylance"]
     },
     {
       "id": "java",
-      "name": "Java (JDK 21)",
+      "name": "Java (JDK 21 LTS)",
       "category": "Java",
       "categoryVi": "Môi trường Java",
-      "description": "Môi trường lập trình Java (OOP), sử dụng OpenJDK 21.",
+      "description": "Môi trường lập trình Java (OOP), sử dụng OpenJDK 21 LTS mới nhất.",
+      "recommended": false,
+      "script": "install-java.ps1",
+      "vscodeExtensions": ["vscjava.vscode-java-pack"]
+    },
+    {
+      "id": "java17",
+      "name": "Java (JDK 17 LTS)",
+      "category": "Java",
+      "categoryVi": "Môi trường Java",
+      "description": "Môi trường lập trình Java (OOP), sử dụng OpenJDK 17 LTS phổ biến ở các hệ thống cũ.",
       "recommended": false,
       "script": "install-java.ps1",
       "vscodeExtensions": ["vscjava.vscode-java-pack"]
     },
     {
       "id": "csharp",
-      "name": "C# (.NET 8 SDK)",
+      "name": "C# (.NET 8 SDK LTS)",
       "category": "CSharp",
       "categoryVi": "Môi trường C#",
-      "description": "Nền tảng phát triển .NET và ngôn ngữ C#.",
+      "description": "Nền tảng phát triển .NET 8 (LTS) ổn định và ngôn ngữ C#.",
+      "recommended": false,
+      "script": "install-dotnet.ps1",
+      "vscodeExtensions": ["ms-dotnettools.csharp"]
+    },
+    {
+      "id": "csharp9",
+      "name": "C# (.NET 9 SDK)",
+      "category": "CSharp",
+      "categoryVi": "Môi trường C#",
+      "description": "Nền tảng phát triển .NET 9 mới nhất.",
       "recommended": false,
       "script": "install-dotnet.ps1",
       "vscodeExtensions": ["ms-dotnettools.csharp"]
@@ -109,7 +139,17 @@
       "name": "Node.js (Bản LTS)",
       "category": "Node.js",
       "categoryVi": "Môi trường Node.js",
-      "description": "Môi trường JavaScript runtime ổn định cho học lập trình web và công nghệ phần mềm.",
+      "description": "Môi trường JavaScript runtime phiên bản Ổn định (LTS).",
+      "recommended": false,
+      "script": "install-node.ps1",
+      "vscodeExtensions": ["dbaeumer.vscode-eslint"]
+    },
+    {
+      "id": "node-current",
+      "name": "Node.js (Bản Hiện tại)",
+      "category": "Node.js",
+      "categoryVi": "Môi trường Node.js",
+      "description": "Môi trường JavaScript runtime phiên bản Mới nhất với các tính năng mới.",
       "recommended": false,
       "script": "install-node.ps1",
       "vscodeExtensions": ["dbaeumer.vscode-eslint"]
@@ -160,9 +200,13 @@
     "clang": "LLVM.LLVM",
     "cppcheck": "Cppcheck.Cppcheck",
     "python": "Python.Python.3.13",
+    "python312": "Python.Python.3.12",
     "node": "OpenJS.NodeJS.LTS",
+    "node-current": "OpenJS.NodeJS",
     "java": "Microsoft.OpenJDK.21",
-    "csharp": "Microsoft.DotNet.SDK.8"
+    "java17": "Microsoft.OpenJDK.17",
+    "csharp": "Microsoft.DotNet.SDK.8",
+    "csharp9": "Microsoft.DotNet.SDK.9"
   },
   "vscodeExtensions": [
     "formulahendry.code-runner"

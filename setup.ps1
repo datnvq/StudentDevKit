@@ -352,6 +352,7 @@ function Invoke-InstallPlan {
         try {
             Write-Host "  -> Dang thuc thi: $scriptName..." -ForegroundColor DarkCyan
             $global:LASTEXITCODE = 0
+            $env:STUDENTDEVKIT_CURRENT_COMP_ID = $id
             & $scriptPath
 
             # Refresh PATH so verification is reliable immediately

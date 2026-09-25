@@ -212,7 +212,7 @@ function Test-ComponentInstalled {
             return (Test-Path $loc)
         }
 
-        'python' {
+        'python', 'python312' {
             $cmd = Get-Command 'python' -ErrorAction SilentlyContinue
             if (-not $cmd) { return $false }
             # Exclude Windows Store stub (opens Store when run, not real Python)
@@ -220,16 +220,16 @@ function Test-ComponentInstalled {
             return $true
         }
 
-        'node' {
+        'node', 'node-current' {
             return (& $inPath 'node')
         }
 
-        'java' {
+        'java', 'java17' {
             if (& $inPath 'java') { return $true }
             if (& $inPath 'javac') { return $true }
             $locs = @(
-                (Join-Path $env:ProgramFiles 'Eclipse Adoptium\jdk-21*\bin\java.exe'),
-                (Join-Path $env:ProgramFiles 'Microsoft\jdk-21*\bin\java.exe')
+                (Join-Path $env:ProgramFiles 'Eclipse Adoptium\jdk-*\bin\java.exe'),
+                (Join-Path $env:ProgramFiles 'Microsoft\jdk-*\bin\java.exe')
             )
             foreach ($l in $locs) {
                 if (Get-ChildItem -Path $l -ErrorAction SilentlyContinue) { return $true }
@@ -237,7 +237,7 @@ function Test-ComponentInstalled {
             return $false
         }
 
-        'csharp' {
+        'csharp', 'csharp9' {
             if (& $inPath 'dotnet') { return $true }
             $loc = Join-Path $env:ProgramFiles 'dotnet\dotnet.exe'
             return (Test-Path $loc)
