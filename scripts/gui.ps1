@@ -1,4 +1,4 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 # scripts/gui.ps1 — StudentDevKit WPF GUI (Dark Theme)
 # Installer runs in a background PowerShell Runspace so the UI never freezes.
 # Compatible: PowerShell 5.1+, .NET Framework 4.5+

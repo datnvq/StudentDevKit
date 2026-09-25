@@ -1,4 +1,4 @@
-# scripts/detect.ps1
+﻿# scripts/detect.ps1
 # Single source of truth for component detection.
 # Dot-sourced by: setup.ps1, gui.ps1, verify.ps1, and gcc/gdb installer scripts.
 # Must NOT import common.ps1 (no circular deps). Self-contained.
