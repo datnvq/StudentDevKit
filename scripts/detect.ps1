@@ -265,7 +265,35 @@ function Test-ComponentInstalled {
         }
 
         'vscode-ext' {
-            return $false
+            $extDir = Join-Path $env:USERPROFILE '.vscode\extensions'
+            if (-not (Test-Path $extDir)) { return $false }
+            
+            $cfgPath = Join-Path (Split-Path $PSScriptRoot -Parent) 'config\components.json'
+            if (-not (Test-Path $cfgPath)) { return $false }
+            $cfg = Get-Content $cfgPath -Raw -Encoding UTF8 | ConvertFrom-Json
+            
+            $expected = @()
+            if ($cfg.vscodeExtensions) { $expected += $cfg.vscodeExtensions }
+            
+            foreach ($comp in $cfg.components) {
+                if ($comp.vscodeExtensions -and $comp.id -ne 'vscode-ext') {
+                    if (Test-ComponentInstalled $comp.id) {
+                        $expected += $comp.vscodeExtensions
+                    }
+                }
+            }
+            
+            if ($expected.Count -eq 0) { return $true }
+            
+            $installedDirs = Get-ChildItem -Path $extDir -Directory -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name
+            if (-not $installedDirs) { return $false }
+            
+            foreach ($ext in $expected) {
+                $extEsc = [regex]::Escape($ext.ToLowerInvariant())
+                $match = $installedDirs | Where-Object { $_.ToLowerInvariant() -match "^$extEsc-\d" }
+                if (-not $match) { return $false }
+            }
+            return $true
         }
 
         'settings' {
