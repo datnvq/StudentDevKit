@@ -1,4 +1,4 @@
-﻿#requires -Version 5.1
+#requires -Version 5.1
 [CmdletBinding()]
 param(
     [switch]$Gui,
@@ -311,7 +311,7 @@ function Invoke-InstallPlan {
 
     # Create log file
     $logFile = New-DevKitLogFile
-    Write-DevKitLog "Installation started. Plan: $($plan | ForEach-Object { $_.id } | Join-String -Separator ', ')" -LogFile $logFile
+    Write-DevKitLog "Installation started. Plan: $(($plan | ForEach-Object { $_.id }) -join ', ')" -LogFile $logFile
 
     $total  = $plan.Count
     $index  = 0
