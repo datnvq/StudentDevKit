@@ -212,19 +212,35 @@ function Test-ComponentInstalled {
             return (Test-Path $loc)
         }
 
-        'python', 'python312' {
+        'python' {
             $cmd = Get-Command 'python' -ErrorAction SilentlyContinue
             if (-not $cmd) { return $false }
-            # Exclude Windows Store stub (opens Store when run, not real Python)
+            if ($cmd.Source -like '*\WindowsApps\python*') { return $false }
+            return $true
+        }
+        'python312' {
+            $cmd = Get-Command 'python' -ErrorAction SilentlyContinue
+            if (-not $cmd) { return $false }
             if ($cmd.Source -like '*\WindowsApps\python*') { return $false }
             return $true
         }
 
-        'node', 'node-current' {
-            return (& $inPath 'node')
-        }
+        'node' { return (& $inPath 'node') }
+        'node-current' { return (& $inPath 'node') }
 
-        'java', 'java17' {
+        'java' {
+            if (& $inPath 'java') { return $true }
+            if (& $inPath 'javac') { return $true }
+            $locs = @(
+                (Join-Path $env:ProgramFiles 'Eclipse Adoptium\jdk-*\bin\java.exe'),
+                (Join-Path $env:ProgramFiles 'Microsoft\jdk-*\bin\java.exe')
+            )
+            foreach ($l in $locs) {
+                if (Get-ChildItem -Path $l -ErrorAction SilentlyContinue) { return $true }
+            }
+            return $false
+        }
+        'java17' {
             if (& $inPath 'java') { return $true }
             if (& $inPath 'javac') { return $true }
             $locs = @(
@@ -237,7 +253,12 @@ function Test-ComponentInstalled {
             return $false
         }
 
-        'csharp', 'csharp9' {
+        'csharp' {
+            if (& $inPath 'dotnet') { return $true }
+            $loc = Join-Path $env:ProgramFiles 'dotnet\dotnet.exe'
+            return (Test-Path $loc)
+        }
+        'csharp9' {
             if (& $inPath 'dotnet') { return $true }
             $loc = Join-Path $env:ProgramFiles 'dotnet\dotnet.exe'
             return (Test-Path $loc)
